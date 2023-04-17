@@ -1,0 +1,48 @@
+<section id="contatti">
+        <h4>Vuoi saperne di più? Compila il modulo e ti contetteremo il prima possibile</h4>            
+        <form #myForm="ngForm" id="modulo_contatti" action="#" method="post" class="needs-validation mt-5" (ngSubmit)="invia()" novalidate>
+            <ul>
+                <li>
+                    <label for="nome">Nome</label>
+                    <input #nome="ngModel" [(ngModel)]="model.nome" [ngStyle]="{'border': nome.hasError('required') && nome.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" type="text" name="nome" id="nome" required>
+                    <span *ngIf="nome.hasError('required') && nome.touched">Inserisci il tuo nome!</span>
+                </li>
+
+                <li>
+                    <label for="cognome">Cognome</label>
+                    <input #cognome="ngModel" [(ngModel)]="model.cognome" [ngStyle]="{'border': cognome.hasError('required') && cognome.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" type="text" name="cognome" id="cognome" required>
+                    <span *ngIf="cognome.hasError('required') && cognome.touched">Inserisci il tuo cognome!</span>
+                </li>
+                        
+                <li>
+                    <label for="email">E-mail</label>
+                    <input #email="ngModel" [(ngModel)]="model.email" [ngStyle]="{'border': email.hasError('required') && email.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" type="text" name="email" id="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
+                    <span id="erroreMail" *ngIf="email.hasError('pattern') && email.touched">Inserisci una mail valida!</span>
+                    <span *ngIf="email.hasError('required') && email.touched">Inserisci la tua mail!</span>
+                </li>
+                
+                <li>
+                    <label for="telefono">Telefono</label>
+                    <input #telefono="ngModel" [(ngModel)]="model.telefono" [ngStyle]="{'border': telefono.hasError('required') && telefono.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" type="tel" name="telefono" id="telefono" required (blur)="checkPhone($event, telefono.value)">
+                    <span *ngIf="telefono.hasError('required') && telefono.touched">Inserisci il tuo telefono!</span>
+                    <span id="erroreTelefono" *ngIf="telefonoInvalido">Inserisci un numero valido!</span>
+                </li>  
+            
+                <li>
+                    <label for="testo">Messaggio</label>
+                    <textarea #messaggio="ngModel" [(ngModel)]="model.messaggio" [ngStyle]="{'border': messaggio.hasError('required') && messaggio.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" name="testo" id="testo" required></textarea>
+                    <span id="textError" *ngIf="messaggio.hasError('required') && messaggio.touched">Inserisci un messaggio!</span>
+                </li>
+
+                <li>
+                    <input #condizioni="ngModel" [(ngModel)]="model.condizioni" type="checkbox" name="condizioni" id="condizioni" required>
+                    <label id="last-label" for="condizioni">Accetto le condizioni di utilizzo...</label>
+                    <span id="check"></span>
+                </li>
+
+                <li>
+                    <button type="submit" class="btn btn-secondary mt-3" [disabled]="!myForm.form.valid">INVIA</button>
+                </li>
+            </ul>
+        </form>
+    </section>

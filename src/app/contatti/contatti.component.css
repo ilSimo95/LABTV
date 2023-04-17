@@ -1,0 +1,125 @@
+section#contatti {
+    text-align: center;
+    color: whitesmoke;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #fff;
+    /* border: 1px solid #fff;
+    cursor: pointer;
+    height: 40px;
+    width: 120px; */
+}
+/*
+button:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+} */
+
+input, textarea {
+    border: 1px solid #000;
+}
+
+.campo_contatti {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 98%;
+    height: 30px;
+    margin-top: 5px;
+    color: whitesmoke;
+}
+
+form#modulo_contatti li:nth-of-type(1), form#modulo_contatti li:nth-of-type(3) {
+    float: left;
+    margin-right: 1%;
+    width: 45%;
+}
+
+form#modulo_contatti li:nth-of-type(2), form#modulo_contatti li:nth-of-type(4) {
+    float: left;
+    margin-left: 1%;
+    width: 45%;
+}
+
+form#modulo_contatti li:nth-of-type(3), form#modulo_contatti li:nth-of-type(5) {
+    clear: left;
+}
+
+form#modulo_contatti li:nth-of-type(1), form#modulo_contatti li:nth-of-type(3), 
+form#modulo_contatti li:nth-of-type(5), form#modulo_contatti li:nth-of-type(6) {
+    margin-left: 4%;
+}
+
+form#modulo_contatti li:nth-of-type(3), form#modulo_contatti li:nth-of-type(4), 
+form#modulo_contatti li:nth-of-type(5), form#modulo_contatti li:nth-of-type(6) {
+    padding-top: 2%;
+}
+
+form#modulo_contatti li:nth-of-type(6) {
+    text-align: left;
+}
+
+form#modulo_contatti label {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+
+input#condizioni {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0;
+    height: 19.5px;
+    width: 19.5px;
+    margin-left: 2px;
+    vertical-align: bottom;
+}
+
+form#modulo_contatti span {
+    text-align: left;
+    color: red;
+    position: absolute;
+    right: 1%;
+    clear: left;
+    display: inline-block;
+}
+
+form#modulo_contatti span#textError {
+    right: 5%;
+}
+
+span#erroreTelefono, span#erroreMail, span#check {
+    left: 0;
+    top: 100%;
+}
+
+form#modulo_contatti li {
+    position: relative;
+}
+
+form#modulo_contatti #last-label {
+    width: 95%;
+}
+
+form#modulo_contatti textarea {
+    width: 95%;
+    height: 70px;
+    margin-top: 5px;
+    position: relative;
+}
+
+form ul li input.errore {
+    border: 1px solid red;
+}
+
+.error {
+    border: 1px solid red !important;
+}

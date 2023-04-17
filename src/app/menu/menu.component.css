@@ -1,0 +1,115 @@
+nav a.navbar-brand {
+    padding: 0;
+    position: relative;
+    background: url(../../assets/img/logo-tipo.png) no-repeat;
+    width: 170px;
+    height: 70px;
+    left: 15px;
+    background-size: contain;
+}
+
+form > .form-control {
+    height: 35px;
+    width: 135px;
+}
+
+form > .btn {
+    font-size: 0.9em;
+    width: 35px;
+    height: 35px;
+}
+
+nav .navbar-collapse, nav .navbar-collapse > ul {
+    margin-right: 0;
+}
+
+nav .navbar-collapse > ul {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align: center;
+}
+
+ul.navbar-nav li:first-child {
+    border-right: 1px solid black;
+}
+
+ul.navbar-nav li:last-child {
+    border-left: 1px solid black;
+}
+
+ul a {
+    display: block;
+}
+
+ul.navbar-nav li {
+    position: relative;
+    padding: 15px 0 15px 0;
+}
+
+li > a.active {
+    font-weight: bolder;
+    font-size: 1.1em;
+    color: #d81c76;
+}
+
+ul.navbar-nav li:after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  top: 80%;
+  width: 0;
+  height: 1px;
+  background-color: black;
+  transition: 0.7s ease;
+}
+
+ul.navbar-nav li:hover:after {
+  width: 80%;
+}
+
+form#smart-search {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    nav a.navbar-brand {
+        width: 120px;
+        height: 50px;
+    }
+    nav > div > form.d-flex {
+        display: none !important;
+    }
+    form#smart-search {
+        display: flex;
+    }
+    form#smart-search > input {
+        height: 30px;
+        font-size: 0.8em;
+    }
+    form#smart-search > button {
+        height: 30px;
+        font-size: 0.8em;
+    }
+    ul.navbar-nav li:hover:after {
+        width: 0;
+    }
+    ul.navbar-nav li {
+        padding: 0;
+    }
+    nav .navbar-collapse > ul {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+    ul.navbar-nav li:first-child {
+        border-right: 0;
+        border-top: 1px solid #d9d9d9;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    ul.navbar-nav li:last-child {
+        border-left: 0;
+        border-top: 1px solid #d9d9d9;
+        border-bottom: 1px solid #d9d9d9;
+    }
+}

@@ -1,0 +1,36 @@
+<div class="main-card card text-center">
+  <div class="card-header">
+    {{film_details.genres}}
+  </div>
+  <img src="{{film_details.image}}" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">{{film_details.title}}</h5>
+    <p class="card-text">{{film_details.plot}}</p>
+    <p>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#cast-details" role="button" aria-expanded="false" aria-controls="cast-details">
+        Cast <i class="bi bi-plus-circle"></i>
+      </a>
+    </p>
+    <div class="collapse" id="cast-details">
+      <div class="card card-body">
+        <ul class="list-unstyled">
+          <li class="my-3" *ngFor="let a of film_details.actorList">{{a.name}} nel ruolo di {{a.asCharacter}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      Un film di {{film_details.directors}}
+    </div>
+  </div>
+</div>
+
+<h3 class="mb-4 text-white">Contenuti simili</h3>
+
+<div class="related-cards">
+  <div *ngFor="let s of film_details.similars" class="related-card card text-center">
+    <img src="{{s.image}}" class="card-img-top">
+    <div class="card-body normalize-height">
+      <h6>{{s.title}}</h6>
+    </div>
+  </div>
+</div>
