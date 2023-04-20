@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Login, Register } from '../interfaces';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,12 @@ import { Login, Register } from '../interfaces';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  constructor(private auth:AuthService) {}
+
+  loginOK:boolean = false;
+  registerOK:boolean = false;
+
   registerModel:Register = {
     username: "",
     email: "",
@@ -21,10 +28,16 @@ export class LoginComponent {
   }
 
   registra():void {
-    console.log(this.loginModel);
+    this.registerOK = true;
+    /* this.auth.register(this.registerModel).subscribe(u => {
+      this.auth.setLoggedUser(u);
+    }); */
   }
 
   login():void {
-    console.log(this.registerModel);
+    this.loginOK = true;
+    /* this.auth.login(this.loginModel).subscribe(u => {
+      this.auth.setLoggedUser(u);
+    }); */
   }
 }
