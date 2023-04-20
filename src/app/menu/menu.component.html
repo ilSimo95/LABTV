@@ -3,10 +3,10 @@
         <a class="navbar-brand" [routerLink]="['/']" mr-5>
         </a>
 
-        <form id="smart-search" role="search">
+        <!-- <form id="smart-search" role="search">
             <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-        </form>
+            <button class="btn btn-outline-success" type="submit" (click)="cerca()"><i class="bi bi-search"></i></button>
+        </form> -->
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,9 +25,6 @@
             </li>
         </ul>
         </div>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-        </form>
+
     </div>
 </nav>

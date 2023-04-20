@@ -6,9 +6,12 @@
   <div class="card-body">
     <h5 class="card-title">{{film_details.title}}</h5>
     <p class="card-text">{{film_details.plot}}</p>
-    <p>
-      <a class="btn btn-primary" data-bs-toggle="collapse" href="#cast-details" role="button" aria-expanded="false" aria-controls="cast-details">
-        Cast <i class="bi bi-plus-circle"></i>
+    <p id="buttons_container" class="text-center">
+      <a class="btn btn-primary" (click)="primaTendina()" data-bs-toggle="collapse" href="#cast-details" role="button" aria-expanded="false" aria-controls="cast-details">
+        Cast <i *ngIf="primaTendinaChiusa" class="bi bi-plus-circle"></i><i *ngIf="primaTendinaAperta" class="bi bi-dash-circle"></i>
+      </a>
+      <a *ngIf="trailer_URL" (click)="secondaTendina()" class="btn btn-primary" data-bs-toggle="collapse" href="#trailer-view" role="button" aria-expanded="false" aria-controls="trailer-view">
+        Trailer <i *ngIf="secondaTendinaChiusa" class="bi bi-plus-circle"></i><i *ngIf="secondaTendinaAperta" class="bi bi-dash-circle"></i>
       </a>
     </p>
     <div class="collapse" id="cast-details">
@@ -17,6 +20,9 @@
           <li class="my-3" *ngFor="let a of film_details.actorList">{{a.name}} nel ruolo di {{a.asCharacter}}</li>
         </ul>
       </div>
+    </div>
+    <div class="collapse" id="trailer-view">
+      <iframe [src]='videoURL()' frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="card-footer text-muted">
       Un film di {{film_details.directors}}

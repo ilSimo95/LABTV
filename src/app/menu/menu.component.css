@@ -13,12 +13,6 @@ form > .form-control {
     width: 135px;
 }
 
-form > .btn {
-    font-size: 0.9em;
-    width: 35px;
-    height: 35px;
-}
-
 nav .navbar-collapse, nav .navbar-collapse > ul {
     margin-right: 0;
 }
@@ -68,28 +62,10 @@ ul.navbar-nav li:hover:after {
   width: 80%;
 }
 
-form#smart-search {
-    display: none;
-}
-
 @media screen and (max-width: 992px) {
     nav a.navbar-brand {
         width: 120px;
         height: 50px;
-    }
-    nav > div > form.d-flex {
-        display: none !important;
-    }
-    form#smart-search {
-        display: flex;
-    }
-    form#smart-search > input {
-        height: 30px;
-        font-size: 0.8em;
-    }
-    form#smart-search > button {
-        height: 30px;
-        font-size: 0.8em;
     }
     ul.navbar-nav li:hover:after {
         width: 0;

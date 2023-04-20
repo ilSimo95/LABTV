@@ -1,5 +1,5 @@
 <section id="contatti">
-        <h4>Vuoi saperne di più? Compila il modulo e ti contetteremo il prima possibile</h4>            
+        <h4>Vuoi saperne di più? Compila il modulo e ti contatteremo il prima possibile</h4>            
         <form #myForm="ngForm" id="modulo_contatti" action="#" method="post" class="needs-validation mt-5" (ngSubmit)="invia()" novalidate>
             <ul>
                 <li>
@@ -14,14 +14,14 @@
                     <span *ngIf="cognome.hasError('required') && cognome.touched">Inserisci il tuo cognome!</span>
                 </li>
                         
-                <li>
+                <li class="mt-md-3 mt-sm-4 mt-5">
                     <label for="email">E-mail</label>
                     <input #email="ngModel" [(ngModel)]="model.email" [ngStyle]="{'border': email.hasError('required') && email.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" type="text" name="email" id="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
                     <span id="erroreMail" *ngIf="email.hasError('pattern') && email.touched">Inserisci una mail valida!</span>
                     <span *ngIf="email.hasError('required') && email.touched">Inserisci la tua mail!</span>
                 </li>
                 
-                <li>
+                <li class="my-md-3 my-sm-4 my-5">
                     <label for="telefono">Telefono</label>
                     <input #telefono="ngModel" [(ngModel)]="model.telefono" [ngStyle]="{'border': telefono.hasError('required') && telefono.touched ? '1px solid red' : '1px solid black'}" class="campo_contatti" type="tel" name="telefono" id="telefono" required (blur)="checkPhone($event, telefono.value)">
                     <span *ngIf="telefono.hasError('required') && telefono.touched">Inserisci il tuo telefono!</span>
@@ -34,7 +34,7 @@
                     <span id="textError" *ngIf="messaggio.hasError('required') && messaggio.touched">Inserisci un messaggio!</span>
                 </li>
 
-                <li>
+                <li class="my-md-3 my-sm-4 my-5">
                     <input #condizioni="ngModel" [(ngModel)]="model.condizioni" type="checkbox" name="condizioni" id="condizioni" required>
                     <label id="last-label" for="condizioni">Accetto le condizioni di utilizzo...</label>
                     <span id="check"></span>

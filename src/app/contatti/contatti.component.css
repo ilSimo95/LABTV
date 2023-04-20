@@ -12,17 +12,7 @@ button {
     font-weight: bold;
     font-size: 0.9em;
     color: #fff;
-    /* border: 1px solid #fff;
-    cursor: pointer;
-    height: 40px;
-    width: 120px; */
 }
-/*
-button:hover {
-    background-color: #fff;
-    color: #000;
-    cursor: pointer;
-} */
 
 input, textarea {
     border: 1px solid #000;
@@ -96,7 +86,7 @@ form#modulo_contatti span#textError {
     right: 5%;
 }
 
-span#erroreTelefono, span#erroreMail, span#check {
+span#erroreMail, span#check {
     left: 0;
     top: 100%;
 }
@@ -106,14 +96,12 @@ form#modulo_contatti li {
 }
 
 form#modulo_contatti #last-label {
-    width: 95%;
+    width: inherit;
 }
 
 form#modulo_contatti textarea {
     width: 95%;
     height: 70px;
-    margin-top: 5px;
-    position: relative;
 }
 
 form ul li input.errore {
@@ -122,4 +110,19 @@ form ul li input.errore {
 
 .error {
     border: 1px solid red !important;
+}
+
+span#erroreTelefono {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+span {
+    font-size: .8em
+}
+
+@media screen and (max-width:768px) {
+    span {
+        font-size: .7em;
+    }
 }

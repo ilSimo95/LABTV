@@ -1,4 +1,19 @@
-<h1 class="text-center mb-5 text-white">Film in evidenza</h1>
+<h1 class="text-center text-white mb-2">Film in evidenza</h1>
+
+<div *ngIf="loading" id="spinner-box" class="text-center">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<form class="d-flex" role="search">
+  <input [(ngModel)]="searchKey" (keydown)="onKeydown($event)" (click)="reset()" name="search" class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit" (click)="cerca()"><i class="bi bi-search"></i></button>
+</form>
+
+<div class="text-center text-white mt-5" *ngIf="noResultsFound">
+  <h5>Nessun risultato corrispondente ai parametri di ricerca.</h5>
+</div>
 
 <div id="myBox">
 
@@ -8,126 +23,5 @@
       <h5 class="card-title">{{film.fullTitle}}</h5>
     </div>
   </div>
-
-  <!-- <div class="card text-center" >
-    <a [routerLink]="['/film-detail/1']"><img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)"></a>
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <a [routerLink]="['/film-detail/2']"><img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)"></a>
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <a [routerLink]="['/film-detail/3']"><img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)"></a>
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div>
-  <div class="card text-center" >
-    <img src="../../assets/img/dummy.jpg" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)">
-    <div class="card-body normalize-height">
-      <h5 class="card-title">Titolo</h5>
-    </div>
-  </div> -->
   
 </div>
