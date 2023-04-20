@@ -11,7 +11,6 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
-import { RegistrazioneComponent } from './registrazione/registrazione.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { RegistrazioneComponent } from './registrazione/registrazione.component'
     HomeComponent,
     FooterComponent,
     NotFoundComponent,
-    FilmDetailComponent,
-    RegistrazioneComponent
+    FilmDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -24,3 +24,27 @@ export interface FilmContainer {
     errorMessage: string
     items: Film[]
 }
+
+export interface Register {
+    username: string
+    email: string
+    password: string
+    ripetiPassword: string
+    termini: boolean
+}
+
+export interface Login {
+    email: string;
+    password: string;
+}
+
+export interface User {
+    email: string;
+    id: number;
+    nome: string;
+}
+
+export interface LoggedUser {
+    user: User;
+    accessToken: string;
+}

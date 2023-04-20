@@ -1,0 +1,11 @@
+span {
+    text-align: left;
+    color: red;
+    position: absolute;
+    clear: left;
+    display: inline-block;
+}
+
+form input.form-control {
+    position: relative;
+}
