@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Login, Register } from '../interfaces';
 import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,10 @@ export class LoginComponent {
 
   constructor(private auth:AuthService) {}
 
-  loginOK:boolean = false;
-  registerOK:boolean = false;
-
   registerModel:Register = {
     username: "",
     email: "",
     password: "",
-    ripetiPassword: "",
     termini: false
   }
 
@@ -28,16 +25,22 @@ export class LoginComponent {
   }
 
   registra():void {
-    this.registerOK = true;
-    /* this.auth.register(this.registerModel).subscribe(u => {
+    this.auth.register(this.registerModel).subscribe(u => {
       this.auth.setLoggedUser(u);
-    }); */
+      this.auth.setLoggedIn(true);
+      environment.isLogged = this.auth.getLoggedIn();
+    });
   }
 
   login():void {
-    this.loginOK = true;
-    /* this.auth.login(this.loginModel).subscribe(u => {
+    this.auth.login(this.loginModel).subscribe(u => {
       this.auth.setLoggedUser(u);
-    }); */
+      this.auth.setLoggedIn(true);
+      environment.isLogged = this.auth.getLoggedIn();
+    });
+  }
+
+  isLoggedIn():boolean {
+    return environment.isLogged;
   }
 }

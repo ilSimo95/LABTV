@@ -33,7 +33,7 @@
                     <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">LOGIN</button>
                 </div>
             </form>
-            <div *ngIf="loginOK" class="alert alert-success mt-4 w-50" role="alert">
+            <div *ngIf="isLoggedIn()" class="alert alert-success mt-4 w-50" role="alert">
                 Sei loggato con successo!
             </div>
         </div>
@@ -66,16 +66,6 @@
                         La password deve contenere un carattere speciale e un numero
                     </span>
                 </div>
-                <div class="col-md-6">
-                    <label for="ripetiPwd" class="form-label">Ripeti Password</label>
-                    <input type="password" #ripetiPwd="ngModel" [(ngModel)]="registerModel.ripetiPassword" [ngStyle]="{'border': (ripetiPwd.hasError('required') && ripetiPwd.touched) || (ripetiPwd.value!=password.value && ripetiPwd.touched) ? '2px solid red' : '2px solid black'}" name="ripetiPwd" class="form-control" id="ripetiPwd" required>
-                    <span *ngIf="ripetiPwd.hasError('required') && ripetiPwd.touched">
-                        Le due password devono coincidere
-                    </span>
-                    <span *ngIf="ripetiPwd.value!=password.value && ripetiPwd.touched">
-                        Le due password devono coincidere
-                    </span>
-                </div>
                 <div class="col-12">
                     <div class="form-check">
                         <input #condizioni="ngModel" [(ngModel)]="registerModel.termini" name="termini" class="form-check-input" type="checkbox" id="termini" required>
@@ -88,7 +78,7 @@
                     <button [disabled]="registrationForm.invalid" class="btn btn-primary" type="submit">REGISTRATI</button>
                 </div>
             </form>
-            <div *ngIf="registerOK" class="alert alert-success mt-4 w-50" role="alert">
+            <div *ngIf="isLoggedIn()" class="alert alert-success mt-4 w-50" role="alert">
                 Registrazione effettuata con successo!
             </div>
         </div>

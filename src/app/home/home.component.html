@@ -17,11 +17,7 @@
 
 <div id="myBox">
 
-  <div *ngFor="let film of films" class="card text-center" >
-    <a routerLink = "/film-detail/{{film.id}}"><img src="{{film.image}}" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)"></a>
-    <div class="card-body normalize-height">
-      <h5 class="card-title">{{film.fullTitle}}</h5>
-    </div>
-  </div>
+  <app-film-preview *ngFor="let film of films" [film]="film">
+  </app-film-preview>
   
 </div>

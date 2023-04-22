@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
+import { FilmAcquistatiComponent } from './film-acquistati/film-acquistati.component';
+import { FilmPreviewComponent } from './film-preview/film-preview.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
     HomeComponent,
     FooterComponent,
     NotFoundComponent,
-    FilmDetailComponent
+    FilmDetailComponent,
+    FilmAcquistatiComponent,
+    FilmPreviewComponent
   ],
   imports: [
     BrowserModule,

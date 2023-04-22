@@ -1,18 +1,26 @@
-form > .form-control {
-    width: 300px;
-}
-
-form {
-    position: absolute;
-    right: 2%;
-}
-
 #myBox {
     margin-top: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 2%;
     grid-row-gap: 100px;
+}
+
+div.card {
+  margin: auto;
+}
+
+img.card-img-top {
+    cursor: pointer;
+    height: 60vh;
+}
+
+.normalize-height {
+    min-height: 200px;
+}
+
+p.crew {
+    font-style: italic;
 }
 
 @media screen and (max-width:1400px) {
@@ -25,16 +33,10 @@ form {
     #myBox {
         grid-template-columns: 1fr 1fr;
     }
-    form > .form-control {
-        width: 200px;
-    }
 }
 
 @media screen and (max-width:768px) {
     #myBox {
         grid-template-columns: 1fr;
-    }
-    form > .form-control {
-        width: 150px;
     }
 }

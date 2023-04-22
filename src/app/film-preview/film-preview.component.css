@@ -1,0 +1,20 @@
+div.card {
+  margin: auto;
+}
+
+div.card:hover {
+    transform: scale(1.1);
+}
+
+.opacized {
+    opacity: 0.5;
+}
+
+img.card-img-top {
+    cursor: pointer;
+    height: 60vh;
+}
+
+.normalize-height {
+    min-height: 130px;
+}

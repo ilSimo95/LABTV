@@ -20,6 +20,17 @@ export interface Film {
     year: string
 }
 
+export interface BuyedFilmPost {
+    userId: number
+    film: Film
+}
+
+export interface BuyedFilm {
+    userId: number
+    film: Film
+    id: number
+}
+
 export interface FilmContainer {
     errorMessage: string
     items: Film[]
@@ -29,22 +40,23 @@ export interface Register {
     username: string
     email: string
     password: string
-    ripetiPassword: string
     termini: boolean
 }
 
 export interface Login {
-    email: string;
-    password: string;
+    email: string
+    password: string
 }
 
 export interface User {
-    email: string;
-    id: number;
-    nome: string;
+    id: number
+    email: string
+    username: string
+    ripetiPassword: string
+    termini: boolean
 }
 
 export interface LoggedUser {
-    user: User;
-    accessToken: string;
+    user: User
+    accessToken: string
 }

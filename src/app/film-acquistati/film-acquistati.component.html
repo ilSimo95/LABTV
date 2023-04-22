@@ -1,0 +1,14 @@
+<h2 class="text-light">Film acquistati</h2>
+
+<div id="myBox">
+
+    <div *ngFor="let film of buyedFilms" class="card text-center">
+        <img src="{{film.film.image}}" class="card-img-top">
+        <div class="card-body normalize-height">
+            <h5 class="card-title">{{film.film.fullTitle}}</h5>
+            <p class="crew text-muted">{{film.film.crew}}</p>
+            <button type="button" (click)="restituisci(film.id)" class="btn btn-danger">Restituisci <i class="bi bi-dash-circle"></i></button>
+        </div>
+    </div>
+
+</div>

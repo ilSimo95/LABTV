@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ManagerService } from '../manager.service';
-import { Film } from '../interfaces';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-menu',
@@ -9,5 +7,7 @@ import { Film } from '../interfaces';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-
+  isLoggedIn():boolean {
+    return environment.isLogged;
+  }
 }

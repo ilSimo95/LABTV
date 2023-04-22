@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Film, FilmContainer } from './interfaces';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BuyedFilm, BuyedFilmPost, Film, FilmContainer } from './interfaces';
+import { environment } from 'src/environments/environment.development';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private auth:AuthService) { }
 
   URL_1:string = "https://imdb-api.com/en/API/MostPopularMovies/k_cs9z4hao";
   URL_2:string = "https://imdb-api.com/it/API/Title/k_cs9z4hao/";
@@ -34,6 +37,37 @@ export class ManagerService {
       }
     }
     return newFilms;
+  }
+
+  buyFilm(film: Film):Observable<BuyedFilm[]> {
+    let filmAcquistato: BuyedFilmPost = {
+        userId: this.auth.getLoggedUser()!.user.id,
+        film: film
+      };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.auth.getLoggedUser()!.accessToken
+      })
+    }
+    return this.http.post<BuyedFilm[]>(environment.USER_API_BASE_URL + "films-acquistati", filmAcquistato, httpOptions);
+  }
+
+  getBuyedFilms():Observable<BuyedFilm[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.auth.getLoggedUser()!.accessToken
+      })
+    }
+    return this.http.get<BuyedFilm[]>(environment.USER_API_BASE_URL + "films-acquistati", httpOptions);
+  }
+
+  deleteBuyedFilms(id:number):Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.auth.getLoggedUser()!.accessToken
+      })
+    }
+    return this.http.delete(environment.USER_API_BASE_URL + "films-acquistati/" + id, httpOptions);
   }
 
 }

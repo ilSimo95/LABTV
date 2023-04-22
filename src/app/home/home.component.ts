@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ManagerService } from '../manager.service';
 import { Film } from '../interfaces';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-home',
@@ -19,15 +20,7 @@ export class HomeComponent implements OnInit {
   noResultsFound:boolean = false;
 
   ngOnInit(): void {
-    // this.getFilms();
-  }
-
-  onImg(event:any):void {
-    event.target.classList.add("opacized");
-  }
-
-  outImg(event:any):void {
-    event.target.classList.remove("opacized");
+    //this.getFilms();
   }
 
   getFilms():void {
@@ -38,10 +31,12 @@ export class HomeComponent implements OnInit {
         this.films = data.items;
         this.loading = false;
       },
-      error: (error) => this.router.navigate(["not-found"]),
+      error: () => this.router.navigate(["not-found"]),
       complete: () => console.log ("Processo terminato")
     });
   }
+
+  // --- FUNZIONI PER GESTIRE IL FORM DI RICERCA --- //
 
   cerca():void {
     if (this.films != null) {

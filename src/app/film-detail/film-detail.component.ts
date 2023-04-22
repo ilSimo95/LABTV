@@ -41,7 +41,7 @@ export class FilmDetailComponent implements OnInit {
           console.log(data);
           this.film_details = data;
         },
-        error: (error) => this.router.navigate(["not-found"]),
+        error: () => this.router.navigate(["not-found"]),
         complete: () => console.log ("Processo terminato")
       });
     }
@@ -58,7 +58,7 @@ export class FilmDetailComponent implements OnInit {
           console.log(data);
           this.trailer_URL = data.videoUrl.replace("watch?v=", "embed/");
         },
-        error: (error) => this.router.navigate(["not-found"]),
+        error: () => this.router.navigate(["not-found"]),
         complete: () => console.log ("Processo terminato")
       });
     }
