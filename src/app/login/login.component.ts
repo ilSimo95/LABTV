@@ -43,4 +43,8 @@ export class LoginComponent {
   isLoggedIn():boolean {
     return environment.isLogged;
   }
+
+  logout():void {
+    this.auth.logout();
+  }
 }

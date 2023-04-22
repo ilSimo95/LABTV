@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   noResultsFound:boolean = false;
 
   ngOnInit(): void {
-    //this.getFilms();
+    this.getFilms();
   }
 
   getFilms():void {

@@ -52,4 +52,11 @@ export class AuthService {
     }
   }
 
+  logout():void {
+    if (confirm("Vuoi effettuare il logout?")) {
+      localStorage.removeItem("user");
+      environment.isLogged = false;
+    }
+  }
+
 }

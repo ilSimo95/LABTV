@@ -4,6 +4,7 @@ span {
     position: absolute;
     clear: left;
     display: inline-block;
+    font-size: 0.8em;
 }
 
 form input.form-control {

@@ -1,31 +1,32 @@
 <div class="container">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
-            <button class="nav-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" id="nav-registrazione-tab" data-bs-toggle="tab" data-bs-target="#nav-registrazione" type="button" role="tab" aria-controls="nav-registrazione" aria-selected="false">Registrazione</button>
+            <button *ngIf="!isLoggedIn()" class="nav-link active link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Login</button>
+            <button *ngIf="!isLoggedIn()" class="nav-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" id="nav-registrazione-tab" data-bs-toggle="tab" data-bs-target="#nav-registrazione" type="button" role="tab" aria-controls="nav-registrazione" aria-selected="false">Registrazione</button>
+            <button *ngIf="isLoggedIn()" class="nav-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" id="nav-logout-tab" data-bs-toggle="tab" data-bs-target="#nav-logout" type="button" role="tab" aria-controls="nav-logout" aria-selected="false">Logout</button>
         </div>
     </nav>
 
     <div class="tab-content mt-5" id="nav-tabContent">
-        <div class="tab-pane fade show active text-light" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
+        <div *ngIf="!isLoggedIn()" class="tab-pane fade show active text-light" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
             <form #loginForm="ngForm" class="row g-md-5 g-4 needs-validation" (ngSubmit)="login()" novalidate>
             <div class="col-md-6">
                     <label for="mail" class="form-label">E-mail</label>
-                    <input type="mail" #mail="ngModel" [(ngModel)]="loginModel.email" [ngStyle]="{'border': (mail.hasError('required') && mail.touched) || (mail.hasError('pattern') && mail.touched) ? '2px solid red' : '2px solid black'}" name="mail" class="form-control" id="mail" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
+                    <input type="mail" #mail="ngModel" [(ngModel)]="loginModel.email" [ngStyle]="{'border': (mail.hasError('required') && mail.touched) || (mail.hasError('pattern') && mail.dirty) ? '2px solid red' : '2px solid black'}" name="mail" class="form-control" id="mail" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
                     <span *ngIf="mail.hasError('required') && mail.touched">
                         Inserisci la tua e-mail
                     </span>
-                    <span *ngIf="mail.hasError('pattern') && mail.touched">
+                    <span *ngIf="mail.hasError('pattern') && mail.dirty">
                         Inserisci una e-mail valida
                     </span>
                 </div>
                 <div class="col-md-6">
                     <label for="pwd" class="form-label">Password</label>
-                    <input type="password" #pwd="ngModel" [(ngModel)]="loginModel.password" [ngStyle]="{'border': (pwd.hasError('required') && pwd.touched) || (pwd.hasError('pattern') && pwd.touched) ? '2px solid red' : '2px solid black'}" name="pwd" class="form-control" id="pwd" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$" required>
+                    <input type="password" #pwd="ngModel" [(ngModel)]="loginModel.password" [ngStyle]="{'border': (pwd.hasError('required') && pwd.touched) || (pwd.hasError('pattern') && pwd.dirty) ? '2px solid red' : '2px solid black'}" name="pwd" class="form-control" id="pwd" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$" required>
                     <span *ngIf="pwd.hasError('required') && pwd.touched">
                         Inserisci la tua password
                     </span>
-                    <span *ngIf="pwd.hasError('pattern') && pwd.touched">
+                    <span *ngIf="pwd.hasError('pattern') && pwd.dirty">
                         La password deve contenere un carattere speciale e un numero
                     </span>
                 </div>
@@ -33,11 +34,8 @@
                     <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">LOGIN</button>
                 </div>
             </form>
-            <div *ngIf="isLoggedIn()" class="alert alert-success mt-4 w-50" role="alert">
-                Sei loggato con successo!
-            </div>
         </div>
-        <div class="tab-pane fade text-light" id="nav-registrazione" role="tabpanel" aria-labelledby="nav-registrazione-tab" tabindex="0">
+        <div *ngIf="!isLoggedIn()" class="tab-pane fade text-light" id="nav-registrazione" role="tabpanel" aria-labelledby="nav-registrazione-tab" tabindex="0">
             <form #registrationForm="ngForm" class="row g-md-5 g-4 needs-validation" (ngSubmit)="registra()" novalidate>
                 <div class="col-md-6">
                     <label for="username" class="form-label">Username</label>
@@ -48,21 +46,21 @@
                 </div>
                 <div class="col-md-6">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" #email="ngModel" [(ngModel)]="registerModel.email" [ngStyle]="{'border': (email.hasError('required') && email.touched) || (email.hasError('pattern') && email.touched) ? '2px solid red' : '2px solid black'}" name="email" class="form-control" id="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
+                    <input type="email" #email="ngModel" [(ngModel)]="registerModel.email" [ngStyle]="{'border': (email.hasError('required') && email.touched) || (email.hasError('pattern') && email.dirty) ? '2px solid red' : '2px solid black'}" name="email" class="form-control" id="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
                     <span *ngIf="email.hasError('required') && email.touched">
                         Inserisci la tua e-mail
                     </span>
-                    <span *ngIf="email.hasError('pattern') && email.touched">
+                    <span *ngIf="email.hasError('pattern') && email.dirty">
                         Inserisci una e-mail valida
                     </span>
                 </div>
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" #password="ngModel" [(ngModel)]="registerModel.password" [ngStyle]="{'border': (password.hasError('required') && password.touched) || (password.hasError('pattern') && password.touched) ? '2px solid red' : '2px solid black'}" name="password" class="form-control" id="password" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$" required>
+                    <input type="password" #password="ngModel" [(ngModel)]="registerModel.password" [ngStyle]="{'border': (password.hasError('required') && password.touched) || (password.hasError('pattern') && password.dirty) ? '2px solid red' : '2px solid black'}" name="password" class="form-control" id="password" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$" required>
                     <span *ngIf="password.hasError('required') && password.touched">
                         Inserisci la tua password
                     </span>
-                    <span *ngIf="password.hasError('pattern') && password.touched">
+                    <span *ngIf="password.hasError('pattern') && password.dirty">
                         La password deve contenere un carattere speciale e un numero
                     </span>
                 </div>
@@ -78,9 +76,12 @@
                     <button [disabled]="registrationForm.invalid" class="btn btn-primary" type="submit">REGISTRATI</button>
                 </div>
             </form>
+        </div>
+        <div *ngIf="isLoggedIn()" class="tab-pane fade show active text-light" id="nav-logout" role="tabpanel" aria-labelledby="nav-logout-tab" tabindex="0">
             <div *ngIf="isLoggedIn()" class="alert alert-success mt-4 w-50" role="alert">
-                Registrazione effettuata con successo!
+                Sei loggato con successo!
             </div>
+            <button type="button" (click)="logout()" class="btn btn-outline-danger mt-3">Logout <i class="bi bi-box-arrow-right"></i></button>
         </div>
     </div>
 </div>
