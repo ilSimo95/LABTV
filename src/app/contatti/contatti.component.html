@@ -36,4 +36,7 @@
             <button type="submit" class="btn btn-primary mt-3" [disabled]="myForm.invalid">INVIA</button>
         </div>
     </form>
+    <div *ngIf="dati_inviati" class="alert alert-success mt-4 w-50" role="alert">
+        Dati inviati con successo!
+    </div>
 </div>

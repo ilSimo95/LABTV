@@ -8,6 +8,7 @@ import { Contatto } from '../interfaces';
 })
 export class ContattiComponent {
 
+  // --- modello da inviare, bindato con campi input html ---
   model:Contatto = {
     nome: "",
     cognome: "",
@@ -17,10 +18,16 @@ export class ContattiComponent {
     condizioni: false
   }
 
+  // --- se true, comparira' in html un alert di avvenuto invio ---
+  dati_inviati:boolean = false;
+
   constructor() {}
 
+  // --- metodo che si attiva quando utente fa click su invia ---
   invia():void {
-    console.log("dati inviati")
+    this.dati_inviati = true;
   }
+
+  // --- PS: tutti gli errori sono gestiti in HTML, con form template-driven ---
 
 }

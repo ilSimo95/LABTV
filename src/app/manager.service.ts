@@ -13,9 +13,9 @@ export class ManagerService {
   constructor(private http:HttpClient,
               private auth:AuthService) { }
 
-  URL_1:string = "https://imdb-api.com/en/API/MostPopularMovies/k_cs9z4hao";
-  URL_2:string = "https://imdb-api.com/it/API/Title/k_cs9z4hao/";
-  URL_3:string = "https://imdb-api.com/en/API/YouTubeTrailer/k_cs9z4hao/";
+  URL_1:string = "https://imdb-api.com/en/API/MostPopularMovies/k_f8p31cw1";
+  URL_2:string = "https://imdb-api.com/it/API/Title/k_f8p31cw1/";
+  URL_3:string = "https://imdb-api.com/en/API/YouTubeTrailer/k_f8p31cw1/";
 
   getFilms(): Observable<FilmContainer> {
     return this.http.get<FilmContainer>(this.URL_1);
@@ -41,9 +41,9 @@ export class ManagerService {
 
   buyFilm(film: Film):Observable<BuyedFilm[]> {
     let filmAcquistato: BuyedFilmPost = {
-        userId: this.auth.getLoggedUser()!.user.id,
-        film: film
-      };
+      userId: this.auth.getLoggedUser()!.user.id,
+      film: film
+    };
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.auth.getLoggedUser()!.accessToken

@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FilmAcquistatiComponent } from './film-acquistati/film-acquistati.component';
 
+// --- array che associa le rotte (URL) ai component che dovranno essere attivati in risposta ---
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "film-detail/:id", component: FilmDetailComponent },
