@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ManagerService } from '../manager.service';
 import { Film } from '../interfaces';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-home',

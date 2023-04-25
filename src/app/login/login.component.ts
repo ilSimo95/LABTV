@@ -36,8 +36,6 @@ export class LoginComponent {
       this.auth.setLoggedUser(u);
       // 3. tramite il service auth dichiaro che l'utente è loggato (incapsulamento)
       this.auth.setLoggedIn(true);
-      // 4. tramite il service auth imposto la variabile globale isLogged su true (è l'unico momento in cui avviene!!!)
-      environment.isLogged = this.auth.getLoggedIn();
     });
   }
 
@@ -48,13 +46,12 @@ export class LoginComponent {
       // 2. tramite il service auth effettuo tutto quello che ho fatto anche nel metodo della registrazione
       this.auth.setLoggedUser(u);
       this.auth.setLoggedIn(true);
-      environment.isLogged = this.auth.getLoggedIn();
     });
   }
 
   // --- metodo per controllare se l'utente è attualmente loggato, controllando la variabile globale isLogged ---
   isLoggedIn():boolean {
-    return environment.isLogged;
+    return this.auth.getLoggedIn();
   }
 
   // --- metodo da invocare quando l'utente fa click sul tasto di logout ---

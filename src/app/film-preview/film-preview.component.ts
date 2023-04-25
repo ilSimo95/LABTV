@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Film } from '../interfaces';
 import { ManagerService } from '../manager.service';
-import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-film-preview',
@@ -13,7 +13,7 @@ export class FilmPreviewComponent {
 
   // --- componente che viene eseguito quando il sito si avvia: si occupa di gestire la rappresentazione di ogni film-card in home ---
 
-  constructor(private ms:ManagerService, private router:Router) {}
+  constructor(private ms:ManagerService, private router:Router, private auth:AuthService) {}
 
   // --- proprieta' col decoratore @Input che avrà come valore un oggetto JSON che rappresenta un film tra i 100 restituiti dal server: uno diverso ad ogni ciclo *ngFor in HTML ---
   @Input()
@@ -21,7 +21,7 @@ export class FilmPreviewComponent {
 
   // --- metodo per controllare se l'utente è attualmente loggato, controllando la variabile globale isLogged ---
   isLoggedIn():boolean {
-    return environment.isLogged;
+    return this.auth.getLoggedIn();
   }
 
   // --- metodo da eseguire quando l'utente clicca sul tasto carrello di un film ---
