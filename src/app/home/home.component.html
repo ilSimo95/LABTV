@@ -15,9 +15,9 @@
   <h5>Nessun risultato corrispondente ai parametri di ricerca.</h5>
 </div>
 
-<div id="myBox">
+<div #corpo id="myBox" (window:scroll)="onWindowScroll()">
 
-  <app-film-preview *ngFor="let film of films" [film]="film">
+  <app-film-preview *ngFor="let film of toShowFilms" [film]="film">
   </app-film-preview>
   
 </div>

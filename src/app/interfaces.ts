@@ -28,6 +28,56 @@ export interface Film {
     year: string
 }
 
+export interface FilmDetail {
+    actorList: Array<any> | null
+    awards: string | null
+    boxOffice: Array<any> | null
+    companies: string  | null
+    companyList: Array<any> | null
+    contentRating: string | null
+    countries: string | null
+    countryList: Array<any> | null
+    directorList: Array<any> | null
+    directors: string | null
+    errorMessage: string | null
+    fullCast: null|string
+    fullTitle: string | null
+    genreList: Array<any> | null
+    genres: string | null
+    id: string | null
+    imDbRating: string | null
+    imDbRatingVotes: string | null
+    image: string | null 
+    images: null|Array<any>|string
+    keywordList: Array<any> | null
+    keywords: string | null
+    languageList: Array<any> | null
+    languages: string | null
+    metacriticRating: string | null
+    originalTitle: string | null
+    plot: string | null
+    plotLocal: string | null
+    plotLocalIsRtl: boolean | null
+    posters: null | string
+    ratings: null | string
+    releaseDate: string | null
+    runtimeMins: string | null
+    runtimeStr: string | null
+    similars: Array<any> | null
+    starList: Array<any> | null
+    stars: string | null
+    tagline: null | string
+    title: string | null
+    trailer: null | string
+    tvEpisodeInfo: null | string
+    tvSeriesInfo: null | string
+    type: string | null
+    wikipedia: string | null 
+    writerList: Array<any> | null
+    writers: string | null
+    year: string | null
+}
+
 // --- interfaccia che definisce un modello per i film che inviamo con una API POST a http:localhost:3000/films-acquistati/ ---
 export interface BuyedFilmPost {
     userId: number

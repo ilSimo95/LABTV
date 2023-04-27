@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BuyedFilm, BuyedFilmPost, Film, FilmContainer } from './interfaces';
+import { BuyedFilm, BuyedFilmPost, Film, FilmContainer, FilmDetail } from './interfaces';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from './auth.service';
 
@@ -16,9 +16,9 @@ export class ManagerService {
               private auth:AuthService) { }
 
   // --- 3 proprietà associate alle 3 URL delle API IMDB utilizzate ---
-  URL_1:string = "https://imdb-api.com/en/API/MostPopularMovies/k_f8p31cw1";
+  URL_1:string = "https://imdb-api.com/it/API/MostPopularMovies/k_f8p31cw1/";
   URL_2:string = "https://imdb-api.com/it/API/Title/k_f8p31cw1/";
-  URL_3:string = "https://imdb-api.com/en/API/YouTubeTrailer/k_f8p31cw1/";
+  URL_3:string = "https://imdb-api.com/it/API/YouTubeTrailer/k_f8p31cw1/";
 
   // --- metodo che effettua una GET API alla URL1 per ottenere tutti i film più popolari in JSON ---
   getFilms(): Observable<FilmContainer> {
@@ -26,8 +26,8 @@ export class ManagerService {
   }
 
   // --- metodo che effettua una GET API alla URL 2 per ottenere i dettagli di un film (in JSON) avendo l'id ---
-  getFilmDetail(id:string): Observable<any> {
-    return this.http.get(this.URL_2 + id);
+  getFilmDetail(id:string): Observable<FilmDetail> {
+    return this.http.get<FilmDetail>(this.URL_2 + id);
   }
 
   // --- metodo che effettua una GET API alla URL 3 per ottenere il link a trailer YT di un film ---
@@ -37,12 +37,7 @@ export class ManagerService {
 
   // --- metodo per filtrare i film mostrati sulla base della search key inserita nel form di ricerca ---
   cerca(films:Film[], key:string): Film[] {
-    const newFilms:Film[] = [];
-    for (const film of films) {
-      if (film.title.includes(key)) {
-        newFilms.push(film);
-      }
-    }
+    const newFilms:Film[] = films.filter(film => film.title.includes(key));
     return newFilms;
   }
 

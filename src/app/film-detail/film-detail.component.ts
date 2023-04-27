@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ManagerService } from '../manager.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FilmDetail } from '../interfaces';
 
 @Component({
   selector: 'app-film-detail',
@@ -16,7 +17,7 @@ export class FilmDetailComponent implements OnInit {
   id?:string;
 
   // --- proprieta' che ogni volta sarà l'oggetto restituito dal server con tutti i dettagli di un film ---
-  film_details:any;
+  film_details?:FilmDetail;
 
   // --- proprieta' per memorizzare la URL del trailer del film una volta "ripulita" dai controlli YouTube ---
   trailer_URL:string = "";
@@ -52,6 +53,7 @@ export class FilmDetailComponent implements OnInit {
         next: (data) => {
           // il risultato lo associo alla proprieta' film_details
           this.film_details = data;
+          console.log(data);
         },
         error: () => this.router.navigate(["not-found"]),
         complete: () => console.log ("Processo terminato")

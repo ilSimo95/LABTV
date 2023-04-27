@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ManagerService } from '../manager.service';
 import { Film } from '../interfaces';
 import { Router } from '@angular/router';
@@ -14,9 +14,15 @@ export class HomeComponent implements OnInit {
 
   constructor(private ms:ManagerService,
               private router:Router) {}
+  
+  // --- proprietà per memorizzare il totale dei film visualizzati attualmente ---
+  actualEnd?:number;
 
   // --- proprietà a cui associare l'array JSON di film restituiti dal server API IMDB ---            
-  films?:Film[];
+  films:Film[] = [];
+
+  // --- proprietà a cui associare un sottoinsieme dei film (solo quelli attualmente visualizzati, in blocchi di 10) ---  
+  toShowFilms:Film[] = [];
 
   // --- flag per controllare se la chiamata GET è già finita (false) o siamo sempre in attesa (true) ---
   loading:boolean = true;
@@ -32,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.getFilms();
   }
 
-  // --- questo è il metodo addetto: lo facciamo sempre in "due mani", tramite service ---
+  // --- metodo per riempire la proprietà films con i risultati della GET (tramite service) ---
   getFilms():void {
     this.ms.getFilms().subscribe(
     {
@@ -43,10 +49,29 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       },
       error: () => this.router.navigate(["not-found"]),
-      complete: () => console.log ("Processo terminato")
+      complete: () => this.showFilms(0, 10)
     });
   }
 
+  // --- metodo per riempire la proprietà showFilms di tanti film presenti in Film[] quanti chiamati dai parametri ---
+  // --- es. se from=0 e to=10 riempirò questo array con i primi 10, se from=20 e to=30 con quelli tra quelle posizioni ---
+  showFilms(from:number, to:number):void {
+    this.actualEnd = to;
+    for(let i=from; i<to; i++) {
+      this.toShowFilms.push(this.films[i]);
+    }
+  }
+
+  // --- metodo che controlla se l'utente ha scorso fino (quasi) in fondo alla pagina ---
+  // --- se lo ha fatto, faccio visualizzare altri 10 film richiamando showFilms con la proprietà actualEnd incrementata ---
+  onWindowScroll():void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+        if (this.actualEnd != undefined) {
+        this.showFilms(this.actualEnd+1, this.actualEnd+11);
+        this.actualEnd = this.actualEnd + 10; // mi ricordo di incrementare actualEnd di 10
+      }
+    }
+  }
 
   // --- 3 METODI PER GESTIRE IL FORM DI RICERCA --- //
 
