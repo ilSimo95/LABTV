@@ -6,12 +6,13 @@ import { ContattiComponent } from './contatti/contatti.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FilmAcquistatiComponent } from './film-acquistati/film-acquistati.component';
+import { AuthGuard } from './auth.guard';
 
 // --- array che associa le rotte (URL) ai component che dovranno essere attivati in risposta ---
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "film-detail/:id", component: FilmDetailComponent },
-  { path: "mychart", component: FilmAcquistatiComponent},
+  { path: "mychart", component: FilmAcquistatiComponent, canActivate: [AuthGuard]},
   { path: "login", component: LoginComponent },
   { path: "contatti", component: ContattiComponent },
   { path: "**", component: NotFoundComponent },

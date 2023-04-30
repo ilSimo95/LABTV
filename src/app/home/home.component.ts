@@ -72,42 +72,4 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
-  // --- 3 METODI PER GESTIRE IL FORM DI RICERCA --- //
-
-  // --- metodo da invocare al click sul tasto cerca del form: filtra solo i film che hanno la searchKey nel titolo ---
-  cerca():void {
-    if (this.films != null) {
-      this.noResultsFound = false;
-      this.films = this.ms.cerca(this.films!, this.searchKey);
-      if (this.films.length == 0) {
-        this.noResultsFound = true;
-      }
-    }
-  }
-
-  // --- metodo da invocare quando l'utente cancella con la tastiera la form di ricerca ---
-  onKeydown(event:any):void {
-    if(event.key == "Backspace" || event.key === "Delete") {
-      if (this.searchKey.length == 1) {
-        // se l'utente ha cancellato tutta la parola, allora faccio visualizzare nuovamente tutti i film (zero filtri)
-        this.noResultsFound = false;
-        this.getFilms();
-      }
-    }
-    // associo anche al tasto ENTER la ricerca, come ho fatto prima col tasto cerca
-    else if (event.key == "Enter") {
-      this.cerca();
-    }
-  }
-
-  // --- metodo da invocare quando l'utente fa click sulla x dentro la form di ricerca ---
-  reset():void {
-    if (this.searchKey != "") {
-      this.noResultsFound = false;
-      // come prima, faccio visualizzare nuovamente tutti i film (azzero i filtri)
-      this.getFilms();
-    }
-  }
-
 }
