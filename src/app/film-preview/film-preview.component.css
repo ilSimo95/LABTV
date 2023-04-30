@@ -12,15 +12,14 @@ div.card:hover {
 
 img.card-img-top {
     cursor: pointer;
-    /*max-height: 60vh;*/
 }
 
-div.card.text-center {
+/* div.card.text-center {
     min-height: 85vh;
-}
+} 
 
 @media screen and (min-width:769px) and (max-width: 992px){
     img.card-img-top {
         max-height: 70vh;
     }
-}
+} */

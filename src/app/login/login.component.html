@@ -77,9 +77,15 @@
                 </div>
             </form>
         </div>
+        <div *ngIf="serverSpento" class="alert alert-danger mt-4 w-50" role="alert">
+            Il server non risponde <i class="bi bi-emoji-frown"></i> Riprova più tardi!
+        </div>
+        <div *ngIf="datiSbagliati" class="alert alert-danger mt-4 w-50" role="alert">
+            E-mail o password errati.
+        </div>
         <div *ngIf="isLoggedIn()" class="tab-pane fade show active text-light" id="nav-logout" role="tabpanel" aria-labelledby="nav-logout-tab" tabindex="0">
             <div *ngIf="isLoggedIn()" class="alert alert-success mt-4 w-50" role="alert">
-                Sei loggato con successo!
+                Sei loggato con successo! <i class="bi bi-emoji-smile"></i>
             </div>
             <button type="button" (click)="logout()" class="btn btn-outline-danger mt-3">Logout <i class="bi bi-box-arrow-right"></i></button>
         </div>

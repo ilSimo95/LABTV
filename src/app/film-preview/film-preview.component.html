@@ -1,4 +1,4 @@
-<div *ngIf="film" class="card text-center"><a routerLink = "/film-detail/{{film.id}}">
+<div *ngIf="film" class="card text-center h-100"><a routerLink = "/film-detail/{{film.id}}">
     <img src="{{film.image}}" class="card-img-top" (mouseenter)="onImg($event)" (mouseleave)="outImg($event)"></a>
     <div class="card-body normalize-height">
         <h5 class="card-title">{{film.fullTitle}}</h5>

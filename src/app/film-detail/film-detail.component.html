@@ -33,7 +33,7 @@
 <h3 class="mb-4 text-white">Contenuti simili</h3>
 
 <div *ngIf="film_details" class="related-cards">
-  <div *ngFor="let s of film_details.similars" class="related-card card text-center">
+  <div *ngFor="let s of film_details.similars" class="related-card card text-center h-100">
     <img src="{{s.image}}" class="card-img-top">
     <div class="card-body normalize-height">
       <h6>{{s.title}}</h6>

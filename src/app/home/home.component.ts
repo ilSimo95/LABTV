@@ -65,10 +65,9 @@ export class HomeComponent implements OnInit {
   // --- metodo che controlla se l'utente ha scorso fino (quasi) in fondo alla pagina ---
   // --- se lo ha fatto, faccio visualizzare altri 10 film richiamando showFilms con la proprietà actualEnd incrementata ---
   onWindowScroll():void {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
-        if (this.actualEnd != undefined) {
-        this.showFilms(this.actualEnd+1, this.actualEnd+11);
-        this.actualEnd = this.actualEnd + 10; // mi ricordo di incrementare actualEnd di 10
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) {
+        if (this.actualEnd != undefined && this.actualEnd+11 <= 100) {
+        this.showFilms(this.actualEnd, this.actualEnd+11);
       }
     }
   }
