@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ManagerService } from '../manager.service';
+import { ManagerService } from '../services/manager.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { FilmDetail } from '../interfaces';
+import { FilmDetail } from '../modules/interfaces';
 
 @Component({
   selector: 'app-film-detail',

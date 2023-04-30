@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ManagerService } from '../manager.service';
-import { BuyedFilm } from '../interfaces';
+import { ManagerService } from '../services/manager.service';
+import { BuyedFilm } from '../modules/interfaces';
 import { Router } from '@angular/router';
 
 @Component({

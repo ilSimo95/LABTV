@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FilmAcquistatiComponent } from './film-acquistati/film-acquistati.component';
 import { FilmPreviewComponent } from './film-preview/film-preview.component';
-import { RicercaPipe } from './ricerca.pipe';
+import { RicercaPipe } from './pipes/ricerca.pipe';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Film } from './interfaces';
+import { Film } from '../modules/interfaces';
 
 @Pipe({
   name: 'ricerca',

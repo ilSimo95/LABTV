@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Login, Register } from '../interfaces';
-import { AuthService } from '../auth.service';
+import { Login, Register } from '../modules/interfaces';
+import { AuthService } from '../services/auth.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({

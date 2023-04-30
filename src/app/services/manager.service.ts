@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BuyedFilm, BuyedFilmPost, Film, FilmContainer, FilmDetail } from './interfaces';
+import { BuyedFilm, BuyedFilmPost, Film, FilmContainer, FilmDetail } from '../modules/interfaces';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from './auth.service';
 

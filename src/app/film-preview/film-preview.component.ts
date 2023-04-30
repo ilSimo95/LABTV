@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Film } from '../interfaces';
-import { ManagerService } from '../manager.service';
+import { Film } from '../modules/interfaces';
+import { ManagerService } from '../services/manager.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-film-preview',

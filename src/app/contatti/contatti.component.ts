@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Contatto } from '../interfaces';
+import { Contatto } from '../modules/interfaces';
 
 @Component({
   selector: 'app-contatti',
