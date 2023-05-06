@@ -15,6 +15,31 @@ form {
     grid-row-gap: 100px;
 }
 
+p#random_button img {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 15%;
+    top: 15%;
+}
+
+p#random_button {
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    background-color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 998;
+}
+
+p#random_button:hover img {
+    transform: rotate(180deg);
+    transition: 0.8s;
+}
+
 @media screen and (max-width:1400px) {
     #myBox {
         grid-template-columns: 1fr 1fr 1fr;

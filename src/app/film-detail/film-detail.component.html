@@ -1,3 +1,9 @@
+<div *ngIf="loading" id="spinner-box" class="text-center">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
 <div *ngIf="film_details" class="main-card card text-center">
   <div class="card-header">
     {{film_details.genres}}

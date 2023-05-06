@@ -33,6 +33,9 @@ export class HomeComponent implements OnInit {
   // --- flag per controllare se la chiave searchKey inserita non corrisponde a nulla nella home page ---
   noResultsFound:boolean = false;
 
+  // --- proprietà che funge da contenitore per tutti gli ID dei film ottenuti dalla GET ---
+  id_container:Array<string> = [];
+
   // --- al caricamento della pagina, effettuo la chiamata API GET per ottenere i film più popolari ---
   ngOnInit(): void {
     this.getFilms();
@@ -46,6 +49,9 @@ export class HomeComponent implements OnInit {
       next: (data) => {
         console.log(data);
         this.films = data.items;
+        for (const f of this.films) {
+          this.id_container.push(f.id);
+        }
         this.loading = false;
       },
       error: () => this.router.navigate(["not-found"]),
@@ -71,4 +77,13 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
+  // --- metodo da attivare quando l'utente fa click sul tasto del dado ---
+  // --- viene generato un numero random da 0 a 99 e viene reindirizzato l'utente a una pagina tipo film-detail/tt097 ---
+  // --- il numero random viene usato come indice dell'array di id dei film (id_container) ---
+  showRandom():void {
+    let random = Math.floor(Math.random()*100);
+    this.router.navigate(["film-detail/" + this.id_container[random]]);
+  }
+
 }

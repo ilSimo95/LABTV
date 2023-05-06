@@ -28,6 +28,9 @@ export class FilmDetailComponent implements OnInit {
   secondaTendinaChiusa: boolean = true;
   secondaTendinaAperta: boolean = false;
 
+  // --- flag per controllare se la chiamata GET è già finita (false) o siamo sempre in attesa (true) ---
+  loading:boolean = true;
+
   constructor (private route: ActivatedRoute,
                 private router: Router,
                 private ms: ManagerService,
@@ -35,6 +38,7 @@ export class FilmDetailComponent implements OnInit {
 
   // --- all'avvio, invoco questi tre metodi del componente per riempire le proprieta' id, film_details e trailer_URL ---
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.id = this.getID();
     this.getFilmDetails();
     this.getFilmTrailer();
@@ -53,7 +57,7 @@ export class FilmDetailComponent implements OnInit {
         next: (data) => {
           // il risultato lo associo alla proprieta' film_details
           this.film_details = data;
-          console.log(data);
+          this.loading = false;
         },
         error: () => this.router.navigate(["not-found"]),
         complete: () => console.log ("Processo terminato")
