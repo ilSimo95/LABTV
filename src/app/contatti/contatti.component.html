@@ -3,13 +3,15 @@
     <form #myForm="ngForm" id="modulo_contatti" action="#" method="post" class="row g-md-5 g-4 mt-1 needs-validation text-light" (ngSubmit)="invia()" novalidate>
         <div class="col-md-6">
             <label for="nome" class="form-label">Nome</label>
-            <input #nome="ngModel" [(ngModel)]="model.nome" [ngStyle]="{'border': nome.hasError('required') && nome.touched ? '2px solid red' : '2px solid black'}" class="form-control" type="text" name="nome" id="nome" required>
+            <input #nome="ngModel" [(ngModel)]="model.nome" [ngStyle]="{'border': (nome.hasError('required') && nome.touched) || (nome.hasError('pattern') && nome.touched) ? '2px solid red' : '2px solid black'}" class="form-control" type="text" name="nome" id="nome" required pattern="[A-Za-z]+$">
             <span *ngIf="nome.hasError('required') && nome.touched">Inserisci il tuo nome!</span>
+            <span *ngIf="nome.hasError('pattern') && nome.touched">Inserisci un nome valido!</span>
         </div>
         <div class="col-md-6">
             <label for="cognome" class="form-label">Cognome</label>
-            <input #cognome="ngModel" [(ngModel)]="model.cognome" [ngStyle]="{'border': cognome.hasError('required') && cognome.touched ? '2px solid red' : '2px solid black'}" class="form-control" type="text" name="cognome" id="cognome" required>
+            <input #cognome="ngModel" [(ngModel)]="model.cognome" [ngStyle]="{'border': (cognome.hasError('required') && cognome.touched) || (cognome.hasError('pattern') && cognome.touched) ? '2px solid red' : '2px solid black'}" class="form-control" type="text" name="cognome" id="cognome" required pattern="[A-Za-z]+$">
             <span *ngIf="cognome.hasError('required') && cognome.touched">Inserisci il tuo cognome!</span>
+            <span *ngIf="cognome.hasError('pattern') && cognome.touched">Inserisci un cognome valido!</span>
         </div>
         <div class="col-md-6">
             <label for="email" class="form-label">E-mail</label>
