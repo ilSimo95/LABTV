@@ -1,4 +1,4 @@
-<nav id="myMenu" class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+<nav id="myMenu" class="navbar navbar-expand-lg bg-body-tertiary sticky-top" (window:resize)="checkSmart()">
     <div class="container px-0">
         <a class="navbar-brand" [routerLink]="['/']" mr-5>
         </a>
@@ -18,10 +18,13 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/contatti']" [routerLinkActive]="['active']">Contatti</a>
                 </li>
+                <li *ngIf="isLoggedIn() && isSmart()" class="nav-item">
+                    <button id="cineteca" [routerLink]="['/mychart']" type="button" class="btn btn-success mb-2">Mia Cineteca <i class="bi bi-film"></i></button>
+                </li>
             </ul>
         </div>
         
-        <button *ngIf="isLoggedIn()" [routerLink]="['/mychart']" type="button" class="btn btn-success mb-2">Mia Cineteca <i class="bi bi-film"></i></button>
+        <button *ngIf="isLoggedIn() && !isSmart()" id="cineteca" [routerLink]="['/mychart']" type="button" class="btn btn-success mb-2">Mia Cineteca <i class="bi bi-film"></i></button>
 
     </div>
 </nav>
