@@ -18,13 +18,10 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/contatti']" [routerLinkActive]="['active']">Contatti</a>
                 </li>
-                <li *ngIf="isLoggedIn() && isSmart" class="nav-item">
-                    <button [routerLink]="['/mychart']" type="button" id="cineteca" class="btn btn-success mb-2">Mia Cineteca <i class="bi bi-film"></i></button>
-                </li>
             </ul>
         </div>
         
-        <button *ngIf="isLoggedIn() && !isSmart" [routerLink]="['/mychart']" type="button" class="btn btn-success mb-2">Mia Cineteca <i class="bi bi-film"></i></button>
+        <button *ngIf="isLoggedIn()" [routerLink]="['/mychart']" type="button" class="btn btn-success mb-2">Mia Cineteca <i class="bi bi-film"></i></button>
 
     </div>
 </nav>

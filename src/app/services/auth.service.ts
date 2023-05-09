@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Film, LoggedUser, Login, Register } from '../modules/interfaces';
+import { LoggedUser, Login, Register } from '../modules/interfaces';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
